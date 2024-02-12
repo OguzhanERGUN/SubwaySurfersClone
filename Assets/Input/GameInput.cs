@@ -41,7 +41,6 @@ public class GameInput : MonoBehaviour
 	private void Movement_performed(InputAction.CallbackContext obj)
 	{
 		PlayerMovementAction?.Invoke(this, EventArgs.Empty);
-		IsPressedAnyButton = true;
 	}
 
 	public Vector2 GetMovementVector()

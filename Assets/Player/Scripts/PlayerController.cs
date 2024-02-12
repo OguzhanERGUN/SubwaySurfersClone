@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] private Transform movementPosRight;
 	[SerializeField] private Transform movementPosLeft;
 	[SerializeField] private Transform movementPosMiddle;
+	[SerializeField] private Animator playerAnimator;
 
 	[Header("Fields")]
 	[SerializeField] private Transform currentPosPoint;
@@ -41,7 +42,8 @@ public class PlayerController : MonoBehaviour
 		Debug.Log(inputActions.GetPressedStatus());
 
 		if (movementVector == Vector2.zero || inputActions.GetPressedStatus()) return;
-		Debug.Log("bip");
+
+
 		if (movementVector == Vector2.left)
 		{
 			if (currentPosPoint == movementPosLeft)
@@ -72,13 +74,25 @@ public class PlayerController : MonoBehaviour
 				currentPosPoint = movementPosMiddle;
 			}
 		}
-		if (movementVector == Vector2.up) return;
-		if (movementVector == Vector2.down) return;
+		if (movementVector == Vector2.up)
+		{
 
+		}
+		if (movementVector == Vector2.down)
+		{
+			StartInclineAnimation();
+		}
+		inputActions.IsPressedAnyButton = true;
 	}
 
 	private void ChangePoint(Transform targetTransform)
 	{
 		transform.position = Vector2.Lerp(transform.position, targetTransform.position, 0.5f);
 	}
+	
+	private void StartInclineAnimation()
+	{
+		playerAnimator.SetBool("Incline", true);
+	}
+
 }
