@@ -35,10 +35,10 @@ public class PlayerController : MonoBehaviour
 
 	private void PlayerMovement()
 	{
-		//for left (-1,0)
-		//for right (1,0)
-		//for Jump (0,1)
-		//for Incline (0,-1)
+		//for left (-1,0)  (A/Left Arrow)
+		//for right (1,0)	(D/Right Arrow)
+		//for Jump (0,1)	(W/Up Arrow)
+		//for Incline (0,-1)	(S/Down Arrow)
 		Vector2 movementVector = inputActions.GetMovementVector();
 		ChangePoint(currentPosPoint);
 
