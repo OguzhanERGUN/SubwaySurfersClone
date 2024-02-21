@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] private Transform movementPosLeft;
 	[SerializeField] private Transform movementPosMiddle;
 	[SerializeField] private Animator playerAnimator;
+	[SerializeField] private GameManager gameManager;
+
 
 	[Header("Fields")]
 	[SerializeField] private Transform currentPosPoint;
@@ -24,7 +26,7 @@ public class PlayerController : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		if (!GameManager.IsGameStart) return;
+		if (!gameManager.IsGameStart) return;
 
 
 		PlayerMovement();
@@ -39,7 +41,6 @@ public class PlayerController : MonoBehaviour
 		//for Incline (0,-1)
 		Vector2 movementVector = inputActions.GetMovementVector();
 		ChangePoint(currentPosPoint);
-		Debug.Log(inputActions.GetPressedStatus());
 
 		if (movementVector == Vector2.zero || inputActions.GetPressedStatus()) return;
 
@@ -87,7 +88,21 @@ public class PlayerController : MonoBehaviour
 
 	private void ChangePoint(Transform targetTransform)
 	{
-		transform.position = Vector2.Lerp(transform.position, targetTransform.position, 0.5f);
+        if (gameManager.IsGameStart)
+        {
+			Vector3 newPosition = new Vector3();
+			newPosition = Vector3.Lerp(transform.position, targetTransform.position, 0.5f);
+			newPosition = new Vector3(newPosition.x, transform.position.y, transform.position.z);
+			transform.position = newPosition;
+		}
+		else if (true)
+		{
+
+		}
+		{
+			transform.position = Vector3.Lerp(transform.position, targetTransform.position, 0.1f);
+		}
+        
 	}
 	
 	private void StartInclineAnimation()
