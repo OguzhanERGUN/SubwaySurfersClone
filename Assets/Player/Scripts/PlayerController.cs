@@ -92,16 +92,15 @@ public class PlayerController : MonoBehaviour
         {
 			Vector3 newPosition = new Vector3();
 			newPosition = Vector3.Lerp(transform.position, targetTransform.position, 0.5f);
-			newPosition = new Vector3(newPosition.x, transform.position.y, transform.position.z);
+			newPosition.y = transform.position.y; 
+
 			transform.position = newPosition;
 		}
-		else if (true)
-		{
-
-		}
-		{
-			transform.position = Vector3.Lerp(transform.position, targetTransform.position, 0.1f);
-		}
+		//else if (gameManager.IsGameStart && gameManager.startCameraMovement)
+		//{
+		//	Debug.Log("ChangePointÖlüNoktaÇalýþtý");
+		//	transform.position = Vector3.Lerp(transform.position, targetTransform.position, 0.1f);
+		//}
         
 	}
 	

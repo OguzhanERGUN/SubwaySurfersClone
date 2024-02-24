@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GroundController : MonoBehaviour
 {
@@ -9,10 +11,6 @@ public class GroundController : MonoBehaviour
 	[SerializeField] private Vector3 endPoint;
 	[SerializeField] private float platformSpeed = 2f;
 
-	void Start()
-	{
-
-	}
 
 	void Update()
 	{
