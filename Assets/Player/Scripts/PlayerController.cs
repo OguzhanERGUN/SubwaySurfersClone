@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
@@ -13,7 +14,7 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] private Transform movementPosMiddle;
 	[SerializeField] private Animator playerAnimator;
 	[SerializeField] private GameManager gameManager;
-
+	
 
 	[Header("Fields")]
 	[SerializeField] private Transform currentPosPoint;
@@ -30,6 +31,12 @@ public class PlayerController : MonoBehaviour
 
 
 		PlayerMovement();
+	}
+
+
+	private void OnCollisionEnter(Collision collision)
+	{
+		ObstacleCollideCheck(collision);
 	}
 
 
@@ -96,17 +103,20 @@ public class PlayerController : MonoBehaviour
 
 			transform.position = newPosition;
 		}
-		//else if (gameManager.IsGameStart && gameManager.startCameraMovement)
-		//{
-		//	Debug.Log("ChangePointÖlüNoktaÇalýþtý");
-		//	transform.position = Vector3.Lerp(transform.position, targetTransform.position, 0.1f);
-		//}
         
 	}
 	
 	private void StartInclineAnimation()
 	{
 		playerAnimator.SetBool("Incline", true);
+	}
+
+	private void ObstacleCollideCheck(Collision collision)
+	{
+		if (collision.gameObject.CompareTag("Obstacle"))
+		{
+			Debug.Log("Crashed");
+		}
 	}
 
 }

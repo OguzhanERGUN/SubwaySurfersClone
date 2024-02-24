@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 	[SerializeField] public bool IsGameStart;
 	[SerializeField] public float Score;
 	[SerializeField] public float HighScore;
+	[SerializeField] public float levelSpeed;
 
 	//These parameters using for beginning 
 	[SerializeField] public bool startPoliceManMovement;
@@ -17,22 +18,14 @@ public class GameManager : MonoBehaviour
 
 	[Header("References")]
 	[SerializeField] private Animator playerAnimator;
-	[SerializeField] private TextMeshProUGUI highScore;
+	[SerializeField] private GameObject beginningAssets;
+	public static GameManager instance;
+
 
 	private void Awake()
 	{
+		instance = this;
 		HighScore = PlayerPrefs.GetFloat("HighScore",HighScore);
-	}
-	// Start is called before the first frame update
-	void Start()
-	{
-		highScore.text = "High Score: " + HighScore.ToString();
-	}
-
-	// Update is called once per frame
-	void Update()
-	{
-
 	}
 
 	public void StartGame()
@@ -48,11 +41,16 @@ public class GameManager : MonoBehaviour
 		startCameraMovement = true;
 		IsGameStart = true;
 		playerAnimator.SetBool("IsStartGame", true);
-
+		beginningAssets.SetActive(false);
 	}
 
-	public void UpdateHighScore()
-	{
+	//public void UpdateHighScore()
+	//{
 
+	//}
+
+	public void UpdateScore(float score)
+	{
+		Score += score;
 	}
 }

@@ -5,23 +5,22 @@ using UnityEngine;
 
 public class Obstacles : MonoBehaviour
 {
+	[Header("Fields")]
 	[SerializeField] private Vector3 startPoint;
 	[SerializeField] private Vector3 endPoint;
-	[SerializeField] private float obstacleSpeed;
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
     void Update()
     {
+		if (!GameManager.instance.IsGameStart) return;
 		if (transform.position.z <= endPoint.z)
 		{
 			transform.position = startPoint;
 			gameObject.SetActive(false);
 		}
-		transform.position = Vector3.MoveTowards(transform.position, endPoint, obstacleSpeed * Time.deltaTime);
+		float levelspeed = GameManager.instance.levelSpeed;
+		transform.position = Vector3.MoveTowards(transform.position, endPoint, levelspeed * Time.deltaTime);
 	}
+
+
 }
