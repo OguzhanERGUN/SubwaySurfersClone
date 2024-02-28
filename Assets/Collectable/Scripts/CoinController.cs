@@ -7,10 +7,10 @@ public class CoinController : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
-		Debug.Log("Altýn aldý");
 		if(other.TryGetComponent<PlayerController>(out PlayerController component))
 		{
 			UIController.instance.UpdateScore(100);
+			gameObject.SetActive(false);
 		}
 	}
 

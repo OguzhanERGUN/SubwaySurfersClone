@@ -263,7 +263,7 @@ GameObject:
   - component: {fileID: 6493895221430343318}
   m_Layer: 0
   m_Name: Plane (3)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -360,10 +360,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e76e405645c6f24eafa2d16fe6e5a9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
   startPoint: {x: 0, y: 0, z: 150}
   endPoint: {x: 0, y: 0, z: -50}
-  platformSpeed: 5
+  obstacles: []
+  obstacleSpawnPoints:
+  - {fileID: 2458134768574195628}
+  - {fileID: 5607110898409035745}
+  - {fileID: 4847713506151069381}
+  - {fileID: 7595890715630510029}
+  - {fileID: 3649034266621558459}
+  - {fileID: 4151646879273856057}
+  - {fileID: 7667263637207697909}
+  - {fileID: 8649044667984358873}
+  - {fileID: 4318734802123786154}
+  - {fileID: 849681074879019676}
+  - {fileID: 9062572555004551495}
+  - {fileID: 1543439643717150686}
+  - {fileID: 4916980192169633457}
+  - {fileID: 8858881598920286881}
+  - {fileID: 3642045753814986699}
 --- !u!65 &6493895221430343318
 BoxCollider:
   m_ObjectHideFlags: 0

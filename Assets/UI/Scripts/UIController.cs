@@ -18,6 +18,7 @@ public class UIController : MonoBehaviour
 		instance = this;
 	}
 
+
 	private void Start()
 	{
 		highScoreText.text = "High Score: " + GameManager.instance.HighScore.ToString();
@@ -43,7 +44,7 @@ public class UIController : MonoBehaviour
 
 	public void SaveHighScore()
 	{
-		PlayerPrefs.SetFloat("HighScore", GameManager.instance.HighScore);
+		PlayerPrefs.SetFloat("High Score", GameManager.instance.HighScore);
 	}
 
 	public void UpdateScore(float score)

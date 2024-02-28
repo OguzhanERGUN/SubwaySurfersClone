@@ -8,9 +8,15 @@ public class GroundController : MonoBehaviour
 {
 	[SerializeField] private Vector3 startPoint;
 	[SerializeField] private Vector3 endPoint;
+	[SerializeField] private List<GameObject> obstacles;
+	[SerializeField] private List<Transform> obstacleSpawnPoints;
 
-	private int levelUpBound = 100;
 
+
+	private void Start()
+	{
+		
+	}
 
 	void Update()
 	{
@@ -25,8 +31,14 @@ public class GroundController : MonoBehaviour
         if (transform.position.z <= endPoint.z)
 		{
 			transform.position = startPoint;
+			CreateNewObstaclew();
 		}
 		float levelspeed = GameManager.instance.levelSpeed;
 		transform.position = Vector3.MoveTowards(transform.position, endPoint, levelspeed * Time.deltaTime);
+	}
+
+	private void CreateNewObstaclew()
+	{
+		throw new NotImplementedException();
 	}
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -19,8 +20,16 @@ public class GameManager : MonoBehaviour
 	[Header("References")]
 	[SerializeField] private Animator playerAnimator;
 	[SerializeField] private GameObject beginningAssets;
+	[SerializeField] private TextMeshProUGUI scoreText;
 	public static GameManager instance;
 
+
+	private void Update()
+	{
+		if (!IsGameStart) return;
+		AddScoreDependsTime();
+
+	}
 
 	private void Awake()
 	{
@@ -52,5 +61,11 @@ public class GameManager : MonoBehaviour
 	public void UpdateScore(float score)
 	{
 		Score += score;
+	}
+
+	private void AddScoreDependsTime()
+	{
+		Score += Time.deltaTime * 100;
+		scoreText.text = "Score: " + Score;
 	}
 }

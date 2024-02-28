@@ -18,4 +18,11 @@ public class PlayerAnimationController : MonoBehaviour
         if (playerAnimator == null) return;
 		playerAnimator.SetBool("Incline", false);
 	}
+
+    public void EndJumpAnimation()
+    {
+		if (playerAnimator == null) return;
+		playerAnimator.SetBool("Jump", false);
+	}
+
 }

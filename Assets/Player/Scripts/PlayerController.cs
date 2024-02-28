@@ -14,21 +14,24 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] private Transform movementPosMiddle;
 	[SerializeField] private Animator playerAnimator;
 	[SerializeField] private GameManager gameManager;
-	
+
 
 	[Header("Fields")]
 	[SerializeField] private Transform currentPosPoint;
+	[SerializeField] private bool isGround;
+	private Rigidbody rb;
+	[SerializeField] private float forcePower;
 
 	private void Start()
 	{
 		currentPosPoint = movementPosMiddle;
+		rb = GetComponent<Rigidbody>();
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
 		if (!gameManager.IsGameStart) return;
-
 
 		PlayerMovement();
 	}
@@ -37,7 +40,9 @@ public class PlayerController : MonoBehaviour
 	private void OnCollisionEnter(Collision collision)
 	{
 		ObstacleCollideCheck(collision);
+		GroundControllerCheck(collision);
 	}
+
 
 
 	private void PlayerMovement()
@@ -48,8 +53,8 @@ public class PlayerController : MonoBehaviour
 		//for Incline (0,-1)	(S/Down Arrow)
 		Vector2 movementVector = inputActions.GetMovementVector();
 		ChangePoint(currentPosPoint);
-
 		if (movementVector == Vector2.zero || inputActions.GetPressedStatus()) return;
+
 
 
 		if (movementVector == Vector2.left)
@@ -82,30 +87,31 @@ public class PlayerController : MonoBehaviour
 				currentPosPoint = movementPosMiddle;
 			}
 		}
-		if (movementVector == Vector2.up)
+		if (movementVector == Vector2.up && isGround)
 		{
-
+			Jump();
 		}
 		if (movementVector == Vector2.down)
 		{
 			StartInclineAnimation();
+			MakePlayerIncline();
 		}
 		inputActions.IsPressedAnyButton = true;
 	}
 
 	private void ChangePoint(Transform targetTransform)
 	{
-        if (gameManager.IsGameStart)
-        {
+		if (gameManager.IsGameStart)
+		{
 			Vector3 newPosition = new Vector3();
 			newPosition = Vector3.Lerp(transform.position, targetTransform.position, 0.5f);
-			newPosition.y = transform.position.y; 
+			newPosition.y = transform.position.y;
 
 			transform.position = newPosition;
 		}
-        
+
 	}
-	
+
 	private void StartInclineAnimation()
 	{
 		playerAnimator.SetBool("Incline", true);
@@ -113,10 +119,34 @@ public class PlayerController : MonoBehaviour
 
 	private void ObstacleCollideCheck(Collision collision)
 	{
-		if (collision.gameObject.CompareTag("Obstacle"))
+		if (collision.gameObject.CompareTag("Obstacle") && !playerAnimator.GetBool("Incline"))
 		{
 			Debug.Log("Crashed");
 		}
 	}
+
+	private void GroundControllerCheck(Collision collision)
+	{
+		if (collision.gameObject.CompareTag("Ground"))
+		{
+			isGround = true;
+		}
+	}
+
+	private void MakePlayerIncline()
+	{
+		playerAnimator.SetBool("Incline", true);
+		playerAnimator.SetBool("Jump", false);
+
+	}
+
+	private void Jump()
+	{
+		rb.velocity = Vector3.up * forcePower;
+		playerAnimator.SetBool("Jump",true);
+		playerAnimator.SetBool("Incline", false);
+		isGround = false;
+	}
+
 
 }
