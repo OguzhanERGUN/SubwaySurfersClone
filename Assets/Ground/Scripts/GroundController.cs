@@ -8,15 +8,13 @@ public class GroundController : MonoBehaviour
 {
 	[SerializeField] private Vector3 startPoint;
 	[SerializeField] private Vector3 endPoint;
-	[SerializeField] private List<GameObject> obstacles;
 	[SerializeField] private List<Transform> obstacleSpawnPoints;
 
 
-
-	private void Start()
-	{
-		
-	}
+	//private void OnEnable()
+	//{
+	//	CreateNewObstacle();
+	//}
 
 	void Update()
 	{
@@ -31,14 +29,23 @@ public class GroundController : MonoBehaviour
         if (transform.position.z <= endPoint.z)
 		{
 			transform.position = startPoint;
-			CreateNewObstaclew();
+			CreateNewObstacle();
 		}
 		float levelspeed = GameManager.instance.levelSpeed;
 		transform.position = Vector3.MoveTowards(transform.position, endPoint, levelspeed * Time.deltaTime);
 	}
 
-	private void CreateNewObstaclew()
+	private void CreateNewObstacle()
 	{
-		throw new NotImplementedException();
+		Debug.Log("Ground Reset");
+		foreach (Transform item in obstacleSpawnPoints)
+		{
+			int objectPoolCount = ObjectPooling.instance.obstaclesPool.Count;
+			int randomObstacleNumber = UnityEngine.Random.Range(0, objectPoolCount);
+
+			//set obstacle position and set active true
+			ObjectPooling.instance.obstaclesPool[randomObstacleNumber].transform.position = item.position;
+			ObjectPooling.instance.obstaclesPool[randomObstacleNumber].SetActive(true);
+		}
 	}
 }

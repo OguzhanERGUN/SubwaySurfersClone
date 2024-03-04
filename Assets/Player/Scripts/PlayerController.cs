@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -135,6 +136,18 @@ public class PlayerController : MonoBehaviour
 
 	private void MakePlayerIncline()
 	{
+		Vector3 inlinePosition;
+		RaycastHit hit;
+
+		if (Physics.Raycast(transform.position,Vector3.down,out hit,3f))
+		{
+			inlinePosition = new Vector3(transform.position.x, hit.point.y, transform.position.z);
+		}
+		else
+		{
+			inlinePosition = new Vector3(transform.position.x, 0, transform.position.z);
+		}
+		transform.position = inlinePosition;
 		playerAnimator.SetBool("Incline", true);
 		playerAnimator.SetBool("Jump", false);
 

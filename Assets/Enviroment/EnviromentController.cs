@@ -3,33 +3,31 @@ using System.Collections.Generic;
 using System.Net;
 using UnityEngine;
 
-public class Obstacles : MonoBehaviour
+public class EnviromentController : MonoBehaviour
 {
-	[Header("Fields")]
 	[SerializeField] private Vector3 endPoint;
+	[SerializeField] private Vector3 startPoint;
 	// Start is called before the first frame update
+	void Start()
+    {
+        
+    }
 
-
-	private void OnEnable()
-	{
-		endPoint = new Vector3(transform.position.x, transform.position.y, -100);
-		ObjectPooling.instance.obstaclesPool.Remove(gameObject);
-	}
-
-	private void OnDisable()
-	{
-		ObjectPooling.instance.obstaclesPool.Add(gameObject);
-	}
-	void Update()
+    // Update is called once per frame
+    void Update()
     {
 		if (!GameManager.instance.IsGameStart) return;
+		MoveEnviroment();
+    }
+
+	void MoveEnviroment()
+	{
+		//Platforms positions change per frame by z axis
 		if (transform.position.z <= endPoint.z)
 		{
-			gameObject.SetActive(false);
+			transform.position = startPoint;
 		}
 		float levelspeed = GameManager.instance.levelSpeed;
 		transform.position = Vector3.MoveTowards(transform.position, endPoint, levelspeed * Time.deltaTime);
 	}
-
-
 }

@@ -277,7 +277,7 @@ Transform:
   m_GameObject: {fileID: 4288123577955697655}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 150}
-  m_LocalScale: {x: 1, y: 1, z: 5}
+  m_LocalScale: {x: 1, y: 1, z: 5.2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2458134768574195628}
@@ -362,7 +362,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startPoint: {x: 0, y: 0, z: 150}
   endPoint: {x: 0, y: 0, z: -50}
-  obstacles: []
+  obstacles:
+  - {fileID: 1851032171068821527, guid: 5578dcf6ce8df41489301ef3f4583889, type: 3}
+  - {fileID: 4381746669928569682, guid: 6efad7a611ab6914e8220dd020641f54, type: 3}
+  - {fileID: 3375268748248118815, guid: bac454c54883fee4994df7a9e321d5a7, type: 3}
+  - {fileID: 542014355203892338, guid: 0c2bf9165295b5d45abf321d668ca1d0, type: 3}
+  - {fileID: 1542207679092537683, guid: 9e98c795b53ba2c4f95703e7da66e6c0, type: 3}
+  - {fileID: 5519377066457480873, guid: 5df76576659b8ed42a527b629c8eb1b0, type: 3}
   obstacleSpawnPoints:
   - {fileID: 2458134768574195628}
   - {fileID: 5607110898409035745}

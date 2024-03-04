@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour
 
 	private void AddScoreDependsTime()
 	{
-		Score += Time.deltaTime * 100;
-		scoreText.text = "Score: " + Score;
+		Score += Time.deltaTime * 50;
+		scoreText.text = "Score: " + ((int)Score);
 	}
 }

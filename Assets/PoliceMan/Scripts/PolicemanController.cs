@@ -9,7 +9,9 @@ public class PolicemanController : MonoBehaviour
 	{
 		if (GameManager.instance.startPoliceManMovement)
 		{
-			transform.position = Vector3.Lerp(transform.position, followPlayerPoisiton.position, 0.1f);
+			Vector3 newPosition = Vector3.Lerp(transform.position, followPlayerPoisiton.position, 0.1f);
+			newPosition.y = transform.position.y;
+			transform.position = newPosition;
 		}
 
 
