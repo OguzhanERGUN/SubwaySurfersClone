@@ -6,15 +6,20 @@ using UnityEngine.Events;
 
 public class GroundController : MonoBehaviour
 {
+	[SerializeField] private bool isBeginningGround;
 	[SerializeField] private Vector3 startPoint;
 	[SerializeField] private Vector3 endPoint;
 	[SerializeField] private List<Transform> obstacleSpawnPoints;
 
 
-	//private void OnEnable()
-	//{
-	//	CreateNewObstacle();
-	//}
+
+	private void Start()
+	{
+		if (!isBeginningGround)
+		{
+			CreateNewObstacle();
+		}
+	}
 
 	void Update()
 	{

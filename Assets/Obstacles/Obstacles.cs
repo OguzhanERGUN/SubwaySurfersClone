@@ -6,7 +6,7 @@ using UnityEngine;
 public class Obstacles : MonoBehaviour
 {
 	[Header("Fields")]
-	[SerializeField] private Vector3 endPoint;
+	private Vector3 endPoint;
 	// Start is called before the first frame update
 
 

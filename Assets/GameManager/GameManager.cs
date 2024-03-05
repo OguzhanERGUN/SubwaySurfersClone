@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
 	[SerializeField] public float Score;
 	[SerializeField] public float HighScore;
 	[SerializeField] public float levelSpeed;
+	[SerializeField] public float levelSpeedCondition;
+	[SerializeField] public float maxLevelSpeed;
 
 	//These parameters using for beginning 
 	[SerializeField] public bool startPoliceManMovement;
@@ -24,17 +26,25 @@ public class GameManager : MonoBehaviour
 	public static GameManager instance;
 
 
+
+	private void Start()
+	{
+		levelSpeedCondition = 500f;
+		maxLevelSpeed = 11;
+	}
+
 	private void Update()
 	{
 		if (!IsGameStart) return;
 		AddScoreDependsTime();
+		UpdateLevelSpeed();
 
 	}
 
 	private void Awake()
 	{
 		instance = this;
-		HighScore = PlayerPrefs.GetFloat("HighScore",HighScore);
+		HighScore = PlayerPrefs.GetFloat("HighScore", HighScore);
 	}
 
 	public void StartGame()
@@ -67,5 +77,19 @@ public class GameManager : MonoBehaviour
 	{
 		Score += Time.deltaTime * 50;
 		scoreText.text = "Score: " + ((int)Score);
+
+	}
+
+	private void UpdateLevelSpeed()
+	{
+		if (Score >= levelSpeedCondition)
+		{
+			if (levelSpeed < maxLevelSpeed)
+			{
+				levelSpeedCondition += 500f;
+				levelSpeed += 1;
+			}
+		}
+
 	}
 }

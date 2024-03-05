@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5518781102606797601}
   - component: {fileID: 3150312031888480594}
   - component: {fileID: 1552467877494073850}
+  - component: {fileID: 9103190401358094609}
   m_Layer: 0
   m_Name: ObstacleJUMP
   m_TagString: Obstacle
@@ -106,3 +107,16 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: a64981f2d6b07c146ace71b6804c1339, type: 3}
+--- !u!114 &9103190401358094609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3375268748248118815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed0678022e808854199c0244dba57eea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  endPoint: {x: 0, y: 0, z: 0}
