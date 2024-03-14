@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -8,14 +9,17 @@ public class UIController : MonoBehaviour
 	[Header("References")]
 	[SerializeField] private GameObject mainMenuCanvas;
 	[SerializeField] private GameObject gamePlayUI;
+	[SerializeField] private GameObject crashedMenuUI;
 	[SerializeField] private TextMeshProUGUI highScoreText;
-	[SerializeField] private TextMeshProUGUI scoreText;
+	[SerializeField] private TextMeshProUGUI scoreTextPlayMenu;
+	[SerializeField] private TextMeshProUGUI scoreTextCrashedMenu;
 
 	public static UIController instance;
 
 	private void Awake()
 	{
 		instance = this;
+		GameManager.instance.playercrashed += OpenCrashedMenu;
 	}
 
 
@@ -34,7 +38,7 @@ public class UIController : MonoBehaviour
 
 	public void ExitGame()
 	{
-		SaveHighScore();
+		SaveDatas();
 #if UNITY_EDITOR
 		UnityEditor.EditorApplication.isPlaying = false;
 #elif UNITY_STANDALONE
@@ -42,14 +46,32 @@ public class UIController : MonoBehaviour
 #endif
 	}
 
-	public void SaveHighScore()
+	public void SaveDatas()
 	{
-		PlayerPrefs.SetFloat("High Score", GameManager.instance.HighScore);
+		if (GameManager.instance.Score >= GameManager.instance.HighScore)
+		{
+			PlayerPrefs.SetFloat("High Score", GameManager.instance.Score);
+
+		}
+		PlayerPrefs.SetFloat("Total Coin", GameManager.instance.totalCoinAmount);
 	}
 
 	public void UpdateScore(float score)
 	{
 		GameManager.instance.UpdateScore(score);
-		scoreText.text = "Score: " + GameManager.instance.Score.ToString();
+		scoreTextPlayMenu.text = "Score: " + GameManager.instance.Score.ToString();
+	}
+
+
+	public void RestartGame()
+	{
+		DataController.instance.EndGame();
+	}
+
+
+	private void OpenCrashedMenu(object sender, System.EventArgs e)
+	{
+		scoreTextCrashedMenu.text = "Your Score: " + GameManager.instance.Score;
+		crashedMenuUI.SetActive(true);
 	}
 }

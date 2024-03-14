@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -13,6 +14,8 @@ public class GameManager : MonoBehaviour
 	[SerializeField] public float levelSpeed;
 	[SerializeField] public float levelSpeedCondition;
 	[SerializeField] public float maxLevelSpeed;
+	[SerializeField] public float totalCoinAmount;
+	[SerializeField] public float playerHp;
 
 	//These parameters using for beginning 
 	[SerializeField] public bool startPoliceManMovement;
@@ -24,8 +27,16 @@ public class GameManager : MonoBehaviour
 	[SerializeField] private GameObject beginningAssets;
 	[SerializeField] private TextMeshProUGUI scoreText;
 	public static GameManager instance;
+	public event EventHandler playercrashed;
 
+	private void OnEnable()
+	{
+		if (playercrashed != null) return;
 
+		playercrashed += GameManager_playercrashed;
+	}
+
+	
 
 	private void Start()
 	{
@@ -63,10 +74,10 @@ public class GameManager : MonoBehaviour
 		beginningAssets.SetActive(false);
 	}
 
-	//public void UpdateHighScore()
-	//{
-
-	//}
+	public void Crashed()
+	{
+		playercrashed?.Invoke(this, EventArgs.Empty);
+	}
 
 	public void UpdateScore(float score)
 	{
@@ -91,5 +102,10 @@ public class GameManager : MonoBehaviour
 			}
 		}
 
+	}
+
+	private void GameManager_playercrashed(object sender, EventArgs e)
+	{
+		IsGameStart = false;
 	}
 }

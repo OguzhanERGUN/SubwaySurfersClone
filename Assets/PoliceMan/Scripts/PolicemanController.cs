@@ -4,16 +4,30 @@ using UnityEngine;
 
 public class PolicemanController : MonoBehaviour
 {
-    [SerializeField] private Transform followPlayerPoisiton;
+    [SerializeField] private Transform followPlayerPoisitonHpTwo;
+    [SerializeField] private Transform followPlayerPoisitonHpOne;
 	private void Update()
+	{
+		PolicemanMovement();
+	}
+
+	private void PolicemanMovement()
 	{
 		if (GameManager.instance.startPoliceManMovement)
 		{
-			Vector3 newPosition = Vector3.Lerp(transform.position, followPlayerPoisiton.position, 0.1f);
-			newPosition.y = transform.position.y;
-			transform.position = newPosition;
+			if (GameManager.instance.playerHp == 2)
+			{
+				Vector3 newPosition = Vector3.Lerp(transform.position, followPlayerPoisitonHpTwo.position, 0.1f);
+				newPosition.y = transform.position.y;
+				transform.position = newPosition;
+			}
+			else if (GameManager.instance.playerHp == 1)
+			{
+				Vector3 newPosition = Vector3.Lerp(transform.position, followPlayerPoisitonHpOne.position, 0.1f);
+				newPosition.y = transform.position.y;
+				transform.position = newPosition;
+			}
+
 		}
-
-
 	}
 }

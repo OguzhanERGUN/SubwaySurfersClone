@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -7125623624087881851}
   m_Layer: 0
   m_Name: SM_PolygonPrototype_Prop_Cone_01
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &9114889848612328614
 MeshFilter:
@@ -119,4 +119,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed0678022e808854199c0244dba57eea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  endPoint: {x: 0, y: 0, z: 0}

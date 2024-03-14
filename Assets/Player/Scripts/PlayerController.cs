@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
 	private Rigidbody rb;
 	[SerializeField] private float forcePower;
 
+
 	private void Start()
 	{
 		currentPosPoint = movementPosMiddle;
@@ -122,7 +123,7 @@ public class PlayerController : MonoBehaviour
 	{
 		if (collision.gameObject.CompareTag("Obstacle") && !playerAnimator.GetBool("Incline"))
 		{
-			Debug.Log("Crashed");
+			GameManager.instance.Crashed();
 		}
 	}
 

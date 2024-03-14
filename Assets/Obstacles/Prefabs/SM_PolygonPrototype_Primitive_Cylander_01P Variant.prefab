@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_PolygonPrototype_Primitive_Cylander_01P Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 1761572497134762, guid: 4ec4cfadebd96154690192fbd49e28b8, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     - target: {fileID: 4963671626276604, guid: 4ec4cfadebd96154690192fbd49e28b8, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -81,4 +85,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed0678022e808854199c0244dba57eea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  endPoint: {x: 0, y: 0, z: 0}
