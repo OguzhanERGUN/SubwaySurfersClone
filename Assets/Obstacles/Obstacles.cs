@@ -13,7 +13,11 @@ public class Obstacles : MonoBehaviour
 	private void OnEnable()
 	{
 		endPoint = new Vector3(transform.position.x, transform.position.y, -100);
-		ObjectPooling.instance.obstaclesPool.Remove(gameObject);
+
+		if (ObjectPooling.instance.obstaclesPool.Contains(gameObject))
+		{
+			ObjectPooling.instance.obstaclesPool.Remove(gameObject);
+		}
 	}
 
 	private void OnDisable()
@@ -21,7 +25,7 @@ public class Obstacles : MonoBehaviour
 		ObjectPooling.instance.obstaclesPool.Add(gameObject);
 	}
 	void Update()
-    {
+	{
 		if (!GameManager.instance.IsGameStart) return;
 		if (transform.position.z <= endPoint.z)
 		{

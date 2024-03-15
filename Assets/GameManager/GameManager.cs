@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour
 	[Header("Fields")]
 	[SerializeField] public bool IsGameStart;
 	[SerializeField] public float Score;
-	[SerializeField] public float HighScore;
 	[SerializeField] public float levelSpeed;
 	[SerializeField] public float levelSpeedCondition;
 	[SerializeField] public float maxLevelSpeed;
@@ -32,11 +31,13 @@ public class GameManager : MonoBehaviour
 	private void OnEnable()
 	{
 		if (playercrashed != null) return;
-
 		playercrashed += GameManager_playercrashed;
 	}
 
-	
+	private void Awake()
+	{
+		instance = this;
+	}
 
 	private void Start()
 	{
@@ -52,11 +53,7 @@ public class GameManager : MonoBehaviour
 
 	}
 
-	private void Awake()
-	{
-		instance = this;
-		HighScore = PlayerPrefs.GetFloat("HighScore", HighScore);
-	}
+
 
 	public void StartGame()
 	{

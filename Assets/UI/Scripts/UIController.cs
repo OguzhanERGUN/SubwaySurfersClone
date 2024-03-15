@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class UIController : MonoBehaviour
@@ -13,6 +14,7 @@ public class UIController : MonoBehaviour
 	[SerializeField] private TextMeshProUGUI highScoreText;
 	[SerializeField] private TextMeshProUGUI scoreTextPlayMenu;
 	[SerializeField] private TextMeshProUGUI scoreTextCrashedMenu;
+	[SerializeField] private TextMeshProUGUI coinCountText;
 
 	public static UIController instance;
 
@@ -25,7 +27,8 @@ public class UIController : MonoBehaviour
 
 	private void Start()
 	{
-		highScoreText.text = "High Score: " + GameManager.instance.HighScore.ToString();
+		DisplayHighScore();
+		DisplayCoinCount();
 	}
 	public void StartGame()
 	{
@@ -36,42 +39,37 @@ public class UIController : MonoBehaviour
 
 
 
+
+	public void DisplayHighScore()
+	{
+		highScoreText.text = "High Score: " + DataController.instance.highScore.ConvertTo<int>().ToString();
+
+	}
 	public void ExitGame()
 	{
-		SaveDatas();
+		DataController.instance.SaveData();
 #if UNITY_EDITOR
 		UnityEditor.EditorApplication.isPlaying = false;
 #elif UNITY_STANDALONE
             Application.Quit();
 #endif
 	}
-
-	public void SaveDatas()
-	{
-		if (GameManager.instance.Score >= GameManager.instance.HighScore)
-		{
-			PlayerPrefs.SetFloat("High Score", GameManager.instance.Score);
-
-		}
-		PlayerPrefs.SetFloat("Total Coin", GameManager.instance.totalCoinAmount);
-	}
-
 	public void UpdateScore(float score)
 	{
 		GameManager.instance.UpdateScore(score);
 		scoreTextPlayMenu.text = "Score: " + GameManager.instance.Score.ToString();
 	}
-
-
+	public void DisplayCoinCount()
+	{
+		coinCountText.text = "Coin: " + GameManager.instance.totalCoinAmount.ToString();
+	}
 	public void RestartGame()
 	{
 		DataController.instance.EndGame();
 	}
-
-
 	private void OpenCrashedMenu(object sender, System.EventArgs e)
 	{
-		scoreTextCrashedMenu.text = "Your Score: " + GameManager.instance.Score;
+		scoreTextCrashedMenu.text = "Your Score: " + (int)GameManager.instance.Score;
 		crashedMenuUI.SetActive(true);
 	}
 }

@@ -1068,7 +1068,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &132105869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6314,6 +6314,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 777f53d3993533d4184fa410d0cdfae7, type: 3}
+--- !u!4 &923750430 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7303289606155051798, guid: 00f0f74d1aafd894bb0bfaeb12b2da96, type: 3}
+  m_PrefabInstance: {fileID: 1105791125425875750}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &936292783 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4124369588495422, guid: a76742b3f592d834ca1e03ad08301998, type: 3}
@@ -8089,7 +8094,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1262463099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8673,6 +8678,7 @@ GameObject:
   - component: {fileID: 1381117339}
   - component: {fileID: 1381117340}
   - component: {fileID: 1381117341}
+  - component: {fileID: 1381117342}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -8709,7 +8715,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsGameStart: 0
   Score: 0
-  HighScore: 0
   levelSpeed: 5
   levelSpeedCondition: 0
   maxLevelSpeed: 0
@@ -8739,6 +8744,21 @@ MonoBehaviour:
   highScoreText: {fileID: 1715463204}
   scoreTextPlayMenu: {fileID: 528576492}
   scoreTextCrashedMenu: {fileID: 1789013930}
+  coinCountText: {fileID: 2061213038}
+--- !u!114 &1381117342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1381117338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 964f29f07aa831b49a96d087aa7cf137, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highScore: 0
+  coinAmount: 0
 --- !u!4 &1395621242 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4525431197815690, guid: d2201b576d0da384fb8f681e57559ea8, type: 3}
@@ -12464,6 +12484,14 @@ PrefabInstance:
       objectReference: {fileID: 1381117340}
     - target: {fileID: 2942920959092281373, guid: 851f6ab35e33b2347a492d7f735d22ee, type: 3}
       propertyPath: followPlayerPoisiton
+      value: 
+      objectReference: {fileID: 660863909}
+    - target: {fileID: 2942920959092281373, guid: 851f6ab35e33b2347a492d7f735d22ee, type: 3}
+      propertyPath: followPlayerPoisitonHpOne
+      value: 
+      objectReference: {fileID: 923750430}
+    - target: {fileID: 2942920959092281373, guid: 851f6ab35e33b2347a492d7f735d22ee, type: 3}
+      propertyPath: followPlayerPoisitonHpTwo
       value: 
       objectReference: {fileID: 660863909}
     - target: {fileID: 3641161894517204099, guid: 851f6ab35e33b2347a492d7f735d22ee, type: 3}

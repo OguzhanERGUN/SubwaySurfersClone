@@ -8,9 +8,10 @@ public class InclineCollider : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
+		Debug.Log(other.tag);
 		if (other.gameObject.CompareTag("Obstacle") && playerAnimator.GetBool("Incline"))
 		{
-			Debug.Log("Crashed while incline");
+			GameManager.instance.Crashed();
 		}
 
 	}

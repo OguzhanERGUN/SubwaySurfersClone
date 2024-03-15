@@ -9,7 +9,7 @@ public class CoinController : MonoBehaviour
 	{
 		if(other.TryGetComponent<PlayerController>(out PlayerController component))
 		{
-			UIController.instance.UpdateScore(100);
+			GameManager.instance.totalCoinAmount += 10;
 			gameObject.SetActive(false);
 		}
 	}

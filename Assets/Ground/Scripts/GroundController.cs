@@ -42,7 +42,6 @@ public class GroundController : MonoBehaviour
 
 	private void CreateNewObstacle()
 	{
-		Debug.Log("Ground Reset");
 		foreach (Transform item in obstacleSpawnPoints)
 		{
 			int objectPoolCount = ObjectPooling.instance.obstaclesPool.Count;

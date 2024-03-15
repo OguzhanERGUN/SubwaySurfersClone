@@ -6,7 +6,6 @@ public class PlayerAnimationController : MonoBehaviour
 {
 
     private Animator playerAnimator;
-    // Start is called before the first frame update
     void Start()
     {
         playerAnimator = GetComponent<Animator>();

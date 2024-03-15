@@ -14,7 +14,7 @@ public class ObjectPooling : MonoBehaviour
 		obstaclesPool = new List<GameObject>();
 		foreach (GameObject obstacle in obstacles)
 		{
-			for (int i = 0; i < 15; i++)
+			for (int i = 0; i < 20; i++)
 			{
 				GameObject newObstacle = Instantiate(obstacle);
 				obstaclesPool.Add(newObstacle);
