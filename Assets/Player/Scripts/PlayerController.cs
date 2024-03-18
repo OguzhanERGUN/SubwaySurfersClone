@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
 
 	[Header("Fields")]
 	[SerializeField] private Transform currentPosPoint;
+	public int health;
 	[SerializeField] private bool isGround;
 	private Rigidbody rb;
 	[SerializeField] private float forcePower;
@@ -123,7 +124,15 @@ public class PlayerController : MonoBehaviour
 	{
 		if (collision.gameObject.CompareTag("Obstacle") && !playerAnimator.GetBool("Incline"))
 		{
-			GameManager.instance.Crashed();
+			if (health == 0)
+			{
+				GameManager.instance.Crashed();
+			}
+			else
+			{
+				health--;
+				UIController.instance.UpdateHealthBar(health);
+			}
 		}
 	}
 

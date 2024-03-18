@@ -15,6 +15,8 @@ public class UIController : MonoBehaviour
 	[SerializeField] private TextMeshProUGUI scoreTextPlayMenu;
 	[SerializeField] private TextMeshProUGUI scoreTextCrashedMenu;
 	[SerializeField] private TextMeshProUGUI coinCountText;
+	[SerializeField] private GameObject secondHealthImage;
+	[SerializeField] private GameObject firstHealthImage;
 
 	public static UIController instance;
 
@@ -36,9 +38,6 @@ public class UIController : MonoBehaviour
 		GameManager.instance.StartGame();
 		gamePlayUI.SetActive(true);
 	}
-
-
-
 
 	public void DisplayHighScore()
 	{
@@ -71,5 +70,21 @@ public class UIController : MonoBehaviour
 	{
 		scoreTextCrashedMenu.text = "Your Score: " + (int)GameManager.instance.Score;
 		crashedMenuUI.SetActive(true);
+	}
+	public void UpdateHealthBar(int health)
+	{
+		if (health == 2)
+		{
+			return;
+		}
+		else if (health == 1)
+		{
+			firstHealthImage.SetActive(false);
+		}
+		else if (health == 0)
+		{
+			secondHealthImage.SetActive(false);
+
+		}
 	}
 }

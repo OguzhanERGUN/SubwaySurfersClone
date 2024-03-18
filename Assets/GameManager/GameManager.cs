@@ -14,7 +14,6 @@ public class GameManager : MonoBehaviour
 	[SerializeField] public float levelSpeedCondition;
 	[SerializeField] public float maxLevelSpeed;
 	[SerializeField] public float totalCoinAmount;
-	[SerializeField] public float playerHp;
 
 	//These parameters using for beginning 
 	[SerializeField] public bool startPoliceManMovement;
