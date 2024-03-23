@@ -2838,6 +2838,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4748624645171214, guid: 56edbd376562e9544ab88753fd3c4682, type: 3}
   m_PrefabInstance: {fileID: 1573915807}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &360404744 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8881577821424925478, guid: 00f0f74d1aafd894bb0bfaeb12b2da96, type: 3}
+  m_PrefabInstance: {fileID: 1105791125425875750}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &364933408
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4587,6 +4592,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4905169720589194, guid: 03b298e339be8c8428fc06f3fc1d627a, type: 3}
   m_PrefabInstance: {fileID: 27080423}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &582668690 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2942920959092281373, guid: 851f6ab35e33b2347a492d7f735d22ee, type: 3}
+  m_PrefabInstance: {fileID: 2703123004665435771}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a65a60b91260cc4c98dd1479311ac8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &583302175
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5279,6 +5295,8 @@ MonoBehaviour:
   gameManager: {fileID: 1381117340}
   camPosition: {fileID: 1477556960}
   camLookingPos: {fileID: 1224358963}
+  endGamePosition: {fileID: 1805926287}
+  endGameLookingPosition: {fileID: 360404744}
 --- !u!1001 &701116733
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9456,7 +9474,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1477556959}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 5.75, z: -5.51}
+  m_LocalPosition: {x: 0, y: 5.75, z: -6.38}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11269,6 +11287,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e30b3aeaaf8ec804198090a10eca14d8, type: 3}
+--- !u!4 &1805926287 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2046723358729435196, guid: 00f0f74d1aafd894bb0bfaeb12b2da96, type: 3}
+  m_PrefabInstance: {fileID: 1105791125425875750}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1808050323
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12915,6 +12938,10 @@ PrefabInstance:
       propertyPath: health
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7193529627020455306, guid: 00f0f74d1aafd894bb0bfaeb12b2da96, type: 3}
+      propertyPath: policeman
+      value: 
+      objectReference: {fileID: 582668690}
     - target: {fileID: 7193529627020455306, guid: 00f0f74d1aafd894bb0bfaeb12b2da96, type: 3}
       propertyPath: gameManager
       value: 

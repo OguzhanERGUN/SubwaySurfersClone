@@ -5,12 +5,24 @@ using UnityEngine;
 public class InclineCollider : MonoBehaviour
 {
 	[SerializeField] private Animator playerAnimator;
+	[SerializeField] private PlayerController playerHealth;
 
 	private void OnTriggerEnter(Collider other)
 	{
 		if (other.gameObject.CompareTag("Obstacle") && playerAnimator.GetBool("Incline"))
 		{
-			GameManager.instance.Crashed();
+			if (playerHealth.health == 0)
+			{
+				GameManager.instance.Crashed();
+			}
+			else
+			{
+
+				playerHealth.health--;
+				UIController.instance.UpdateHealthBar(playerHealth.health);
+			}
+			other.gameObject.SetActive(false);
+			playerHealth.PlayCrashedParticleEffect();
 		}
 
 	}

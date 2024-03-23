@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] private Transform movementPosMiddle;
 	[SerializeField] private Animator playerAnimator;
 	[SerializeField] private GameManager gameManager;
+	[SerializeField] private GameObject particleEffect;
+	[SerializeField] private PolicemanController policeman;
 
 
 	[Header("Fields")]
@@ -45,8 +47,6 @@ public class PlayerController : MonoBehaviour
 		ObstacleCollideCheck(collision);
 		GroundControllerCheck(collision);
 	}
-
-
 
 	private void PlayerMovement()
 	{
@@ -132,7 +132,10 @@ public class PlayerController : MonoBehaviour
 			{
 				health--;
 				UIController.instance.UpdateHealthBar(health);
+				policeman.ChangePolicemanTargetPosition();
 			}
+			collision.gameObject.SetActive(false);
+			PlayCrashedParticleEffect();
 		}
 	}
 
@@ -169,6 +172,11 @@ public class PlayerController : MonoBehaviour
 		playerAnimator.SetBool("Jump",true);
 		playerAnimator.SetBool("Incline", false);
 		isGround = false;
+	}
+
+	public void PlayCrashedParticleEffect()
+	{
+		particleEffect.GetComponent<ParticleSystem>().Play();
 	}
 
 
