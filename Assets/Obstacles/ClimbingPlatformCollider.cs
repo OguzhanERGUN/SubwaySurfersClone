@@ -11,6 +11,7 @@ public class ClimbingPlatformCollider : MonoBehaviour
 	{
 		if (collision.gameObject.CompareTag("Player"))
 		{
+			Debug.Log("çarptý");
 			parentObject.SetActive(false);
 		}
 	}
