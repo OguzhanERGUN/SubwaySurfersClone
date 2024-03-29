@@ -1,2 +1,2 @@
 # SubwaySurfersClone
-Runner game for Syno Games
+Runner game for Velo Games
